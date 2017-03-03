@@ -52,33 +52,39 @@ namespace Tennis
         [Test]
         public void CheckTennisGame1()
         {
-            var game = new TennisGame1(new Player("player1"), new Player("player2"));
-            CheckAllScores(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame1(player1, player2);
+            CheckAllScores(game, player1, player2);
         }
 
         [Test]
         public void CheckTennisGame2()
         {
-            var game = new TennisGame2(new Player("player1"), new Player("player2"));
-            CheckAllScores(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame2(player1, player2);
+            CheckAllScores(game, player1, player2);
         }
 
         [Test]
         public void CheckTennisGame3()
         {
-            var game = new TennisGame3(new Player("player1"), new Player("player2"));
-            CheckAllScores(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame3(player1, player2);
+            CheckAllScores(game, player1, player2);
         }
 
-        private void CheckAllScores(ITennisGame game)
+        private void CheckAllScores(ITennisGame game, Player player1, Player player2)
         {
             var highestScore = Math.Max(player1Score, player2Score);
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < player1Score)
-                    game.AwardPointToPlayer("player1");
+                    game.AwardPointToPlayer(player1);
                 if (i < player2Score)
-                    game.AwardPointToPlayer("player2");
+                    game.AwardPointToPlayer(player2);
             }
             Assert.AreEqual(expectedScore, game.GetScore());
         }
@@ -91,27 +97,33 @@ namespace Tennis
         [Test]
         public void CheckGame1()
         {
-            var game = new TennisGame1(new Player("player1"), new Player("player2"));
-            RealisticTennisGame(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame1(player1, player2);
+            RealisticTennisGame(game, player1, player2);
         }
 
         [Test]
         public void CheckGame2()
         {
-            var game = new TennisGame2(new Player("player1"), new Player("player2"));
-            RealisticTennisGame(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame2(player1, player2);
+            RealisticTennisGame(game, player1, player2);
         }
 
         [Test]
         public void CheckGame3()
         {
-            var game = new TennisGame3(new Player("player1"), new Player("player2"));
-            RealisticTennisGame(game);
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+            var game = new TennisGame3(player1, player2);
+            RealisticTennisGame(game, player1, player2);
         }
 
-        private void RealisticTennisGame(ITennisGame game)
+        private void RealisticTennisGame(ITennisGame game, Player player1, Player player2)
         {
-            string[] points = { "player1", "player1", "player2", "player2", "player1", "player1" };
+            Player[] points = { player1, player1, player2, player2, player1, player1 };
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
             for (var i = 0; i < 6; i++)
             {

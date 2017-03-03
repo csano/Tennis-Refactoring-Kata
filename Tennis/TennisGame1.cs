@@ -13,9 +13,9 @@ namespace Tennis
             this.player2 = player2;
         }
 
-        public void AwardPointToPlayer(string playerName)
+        public void AwardPointToPlayer(Player player)
         {
-            if (playerName == "player1")
+            if (player == player1)
                 player1Score += 1;
             else
                 player2Score += 1;
