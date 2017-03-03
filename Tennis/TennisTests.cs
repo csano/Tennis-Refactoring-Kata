@@ -121,7 +121,7 @@ namespace Tennis
             RealisticTennisGame(game, player1, player2);
         }
 
-        private void RealisticTennisGame(ITennisGame game, Player player1, Player player2)
+        private static void RealisticTennisGame(ITennisGame game, Player player1, Player player2)
         {
             Player[] points = { player1, player1, player2, player2, player1, player1 };
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
