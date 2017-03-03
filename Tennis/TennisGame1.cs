@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     internal class TennisGame1 : ITennisGame
@@ -6,15 +8,19 @@ namespace Tennis
         private readonly Player player2;
         private int player1Score;
         private int player2Score;
+        private readonly Dictionary<Player, int> scores = new Dictionary<Player,int>();
 
         public TennisGame1(Player player1, Player player2)
         {
             this.player1 = player1;
             this.player2 = player2;
+            scores.Add(player1, 0);
+            scores.Add(player2, 0);
         }
 
         public void AwardPointToPlayer(Player player)
         {
+            scores[player]++;
             if (player == player1)
                 player1Score += 1;
             else
