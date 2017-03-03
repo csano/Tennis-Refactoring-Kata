@@ -23,24 +23,22 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            string score;
             if (player1Score == player2Score)
             {
                 return player1Score > 2 ? "Deuce" : $"{StringifyScore(player1Score)}-All";
             }
-            else if (player1Score >= 4 || player2Score >= 4)
+
+            if (player1Score >= 4 || player2Score >= 4)
             {
+            string score;
                 var minusResult = player1Score - player2Score;
                 if (minusResult == 1) score = "Advantage player1";
                 else if (minusResult == -1) score = "Advantage player2";
                 else if (minusResult >= 2) score = "Win for player1";
                 else score = "Win for player2";
+                return score;
             }
-            else
-            {
-                return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
-            }
-            return score;
+            return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
         }
 
         private static string StringifyScore(int tempScore)
