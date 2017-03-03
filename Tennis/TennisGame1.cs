@@ -33,13 +33,11 @@ namespace Tennis
                 return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
             }
 
-            string score;
             var minusResult = player1Score - player2Score;
-            if (minusResult == 1) score = "Advantage player1";
-            else if (minusResult == -1) score = "Advantage player2";
-            else if (minusResult >= 2) score = "Win for player1";
-            else score = "Win for player2";
-            return score;
+            if (minusResult == 1) return "Advantage player1";
+            if (minusResult == -1) return "Advantage player2";
+            if (minusResult >= 2) return "Win for player1";
+            return "Win for player2";
         }
 
         private static string StringifyScore(int tempScore)
