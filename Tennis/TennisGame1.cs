@@ -47,9 +47,9 @@ namespace Tennis
             return "Win for player2";
         }
 
-        private static string StringifyScore(int tempScore)
+        private static string StringifyScore(int score)
         {
-            switch (tempScore)
+            switch (score)
             {
                 case 0:
                     return "Love";
