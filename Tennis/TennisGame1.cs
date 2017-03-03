@@ -24,7 +24,6 @@ namespace Tennis
         public string GetCurrentScore()
         {
             var score = "";
-            var tempScore = 0;
             if (player1Score == player2Score)
             {
                 score = StringifyScore(player1Score);
@@ -49,6 +48,7 @@ namespace Tennis
             {
                 for (var i = 1; i < 3; i++)
                 {
+                    int tempScore;
                     if (i == 1) tempScore = player1Score;
                     else { score += "-"; tempScore = player2Score; }
                     score += StringifyScore(tempScore);
