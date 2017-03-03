@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,11 +41,8 @@ namespace Tennis
                 return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
             }
 
-            var minusResult = player1Score - player2Score;
-            if (minusResult == 1) return "Advantage player1";
-            if (minusResult == -1) return "Advantage player2";
-            if (minusResult >= 2) return "Win for player1";
-            return "Win for player2";
+            var leader = scores.OrderByDescending(x => x.Value).First().Key;
+            return Math.Abs(player1Score - player2Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
 
         private static string StringifyScore(int score)
