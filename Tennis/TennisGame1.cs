@@ -46,7 +46,7 @@ namespace Tennis
             }
             else
             {
-                score = $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
+                return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
             }
             return score;
         }
