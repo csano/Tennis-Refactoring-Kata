@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tennis
 {
@@ -29,13 +30,13 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            if (player1Score == player2Score)
+            if (scores[player1] == scores[player2])
             {
                 return player1Score > 2 ? "Deuce" : $"{StringifyScore(player1Score)}-All";
             }
 
-            if (player1Score < 4 && player2Score < 4)
-            { 
+            if (scores.All(x => x.Value < 4))
+            {
                 return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
             }
 
