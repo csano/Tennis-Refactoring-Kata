@@ -2,6 +2,8 @@ namespace Tennis
 {
     public class TennisGame2 : ITennisGame
     {
+        private readonly Player player1;
+        private readonly Player player2;
         private int p1point;
         private int p2point;
 
@@ -10,11 +12,10 @@ namespace Tennis
         private string player1Name;
         private string player2Name;
 
-        public TennisGame2(string player1Name, string player2Name)
+        public TennisGame2(Player player1, Player player2)
         {
-            this.player1Name = player1Name;
-            p1point = 0;
-            this.player2Name = player2Name;
+            this.player1 = player1;
+            this.player2 = player2;
         }
 
         public string GetScore()
