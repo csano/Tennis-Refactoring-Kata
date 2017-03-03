@@ -17,7 +17,7 @@ namespace Tennis
             this.player2 = player2;
         }
 
-        public string GetScore()
+        public string GetCurrentScore()
         {
             string s;
             if ((p1 < 4 && p2 < 4) && (p1 + p2 < 6))

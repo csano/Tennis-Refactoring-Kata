@@ -21,7 +21,7 @@ namespace Tennis
                 player2Score += 1;
         }
 
-        public string GetScore()
+        public string GetCurrentScore()
         {
             string score = "";
             var tempScore = 0;

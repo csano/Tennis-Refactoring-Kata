@@ -83,7 +83,7 @@ namespace Tennis
                 if (i < player2Score)
                     game.AwardPointToPlayer(player2);
             }
-            Assert.AreEqual(expectedScore, game.GetScore());
+            Assert.AreEqual(expectedScore, game.GetCurrentScore());
         }
 
     }
@@ -122,7 +122,7 @@ namespace Tennis
             for (var i = 0; i < 6; i++)
             {
                 game.AwardPointToPlayer(points[i]);
-                Assert.AreEqual(expectedScores[i], game.GetScore());
+                Assert.AreEqual(expectedScores[i], game.GetCurrentScore());
             }
         }
     }
