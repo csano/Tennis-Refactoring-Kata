@@ -2,15 +2,19 @@ namespace Tennis
 {
     public class TennisGame3 : ITennisGame
     {
+        private readonly Player player1;
+        private readonly Player player2;
         private int p2;
         private int p1;
         private string p1N;
         private string p2N;
 
-        public TennisGame3(string player1Name, string player2Name)
+        public TennisGame3(Player player1, Player player2)
         {
-            this.p1N = player1Name;
-            this.p2N = player2Name;
+            p1N = player1.Name;
+            p2N = player2.Name;
+            this.player1 = player1;
+            this.player2 = player2;
         }
 
         public string GetScore()
