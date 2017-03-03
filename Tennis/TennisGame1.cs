@@ -1,15 +1,5 @@
 namespace Tennis
 {
-    internal class Player
-    {
-        public Player(string name)
-        {
-            Name = name;
-        }
-
-        public string Name { get; private set; }
-    }
-
     internal class TennisGame1 : ITennisGame
     {
         private readonly Player player1;
