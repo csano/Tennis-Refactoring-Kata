@@ -26,15 +26,7 @@ namespace Tennis
             string score;
             if (player1Score == player2Score)
             {
-                score = StringifyScore(player1Score);
-                if (player1Score > 2)
-                {
-                    score = "Deuce";
-                }
-                else
-                {
-                    score += "-All";
-                }
+                return player1Score > 2 ? "Deuce" : $"{StringifyScore(player1Score)}-All";
             }
             else if (player1Score >= 4 || player2Score >= 4)
             {
