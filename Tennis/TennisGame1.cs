@@ -23,21 +23,18 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            string score = "";
+            var score = "";
             var tempScore = 0;
             if (player1Score == player2Score)
             {
                 score = StringifyScore(player1Score);
-                switch (player1Score)
+                if (player1Score > 2)
                 {
-                    case 0:
-                    case 1:
-                    case 2:
-                        score += "-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
+                    score = "Deuce";
+                }
+                else
+                {
+                    score += "-All";
                 }
             }
             else if (player1Score >= 4 || player2Score >= 4)
