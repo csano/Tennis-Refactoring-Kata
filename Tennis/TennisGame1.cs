@@ -23,7 +23,7 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            var score = "";
+            string score;
             if (player1Score == player2Score)
             {
                 score = StringifyScore(player1Score);
