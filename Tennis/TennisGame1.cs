@@ -46,20 +46,7 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    int tempScore;
-                    if (i == 1)
-                    {
-                        tempScore = player1Score;
-                    }
-                    else
-                    {
-                        score += "-";
-                        tempScore = player2Score;
-                    }
-                    score += StringifyScore(tempScore);
-                }
+                score = $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
             }
             return score;
         }
