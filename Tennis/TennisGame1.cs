@@ -18,7 +18,7 @@ namespace Tennis
             scores.Add(player2, 0);
         }
 
-        public void AwardPointToPlayer(Player player)
+        public void IncrementPlayerScore(Player player)
         {
             scores[player]++;
         }
@@ -66,7 +66,7 @@ namespace Tennis
 
         public void AwardPointToPlayer(Player player)
         {
-            score.AwardPointToPlayer(player);
+            score.IncrementPlayerScore(player);
         }
 
         public string GetCurrentScore()
