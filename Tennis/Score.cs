@@ -27,21 +27,16 @@ namespace Tennis
         {
             if (scores.All(x => x.Value == scores.First().Value))
             {
-                return scores[player1] >= Scoring.Forty ? "Deuce" : $"{StringifyScore(scores[player1])}-All";
+                return scores[player1] >= Scoring.Forty ? "Deuce" : $"{scores[player1]}-All";
             }
 
             if (scores.All(x => x.Value <= Scoring.Forty))
             {
-                return $"{StringifyScore(scores[player1])}-{StringifyScore(scores[player2])}";
+                return $"{scores[player1]}-{scores[player2]}";
             }
 
             var leader = scores.OrderByDescending(x => x.Value).First().Key;
             return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
-        }
-
-        private static string StringifyScore(Scoring score)
-        {
-            return score.ToString();
         }
 
         private enum Scoring
