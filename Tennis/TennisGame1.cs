@@ -55,10 +55,9 @@ namespace Tennis
                     return "Fifteen";
                 case 2:
                     return "Thirty";
-                case 3:
+                default:
                     return "Forty";
             }
-            return string.Empty;
         }
     }
 }
