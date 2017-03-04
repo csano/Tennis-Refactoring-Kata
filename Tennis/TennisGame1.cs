@@ -23,7 +23,7 @@ namespace Tennis
             scores[player]++;
         }
 
-        public string GetCurrentScore()
+        public override string ToString()
         {
             if (scores.All(x => x.Value == scores.First().Value))
             {
@@ -71,7 +71,7 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            return score.GetCurrentScore();
+            return score.ToString();
         }
     }
 }
