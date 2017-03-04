@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Tennis
 {
-    internal class TennisGame1 : ITennisGame
+    internal class Score
     {
         private readonly Player player1;
         private readonly Player player2;
         private readonly Dictionary<Player, int> scores = new Dictionary<Player,int>();
 
-        public TennisGame1(Player player1, Player player2)
+        public Score(Player player1, Player player2)
         {
             this.player1 = player1;
             this.player2 = player2;
@@ -52,6 +52,26 @@ namespace Tennis
                 default:
                     return "Forty";
             }
+        }
+    }
+
+    internal class TennisGame1 : ITennisGame
+    {
+        private readonly Score score;
+
+        public TennisGame1(Player player1, Player player2)
+        {
+            score = new Score(player1, player2);
+        }
+
+        public void AwardPointToPlayer(Player player)
+        {
+            score.AwardPointToPlayer(player);
+        }
+
+        public string GetCurrentScore()
+        {
+            return score.GetCurrentScore();
         }
     }
 }

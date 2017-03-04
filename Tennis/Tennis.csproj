@@ -50,6 +50,7 @@
     <Compile Include="TennisGame2.cs" />
     <Compile Include="TennisGame3.cs" />
     <Compile Include="TennisTests.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
