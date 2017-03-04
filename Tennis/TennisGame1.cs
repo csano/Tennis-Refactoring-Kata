@@ -8,8 +8,6 @@ namespace Tennis
     {
         private readonly Player player1;
         private readonly Player player2;
-        private int player1Score;
-        private int player2Score;
         private readonly Dictionary<Player, int> scores = new Dictionary<Player,int>();
 
         public TennisGame1(Player player1, Player player2)
@@ -23,26 +21,22 @@ namespace Tennis
         public void AwardPointToPlayer(Player player)
         {
             scores[player]++;
-            if (player == player1)
-                player1Score += 1;
-            else
-                player2Score += 1;
         }
 
         public string GetCurrentScore()
         {
             if (scores.All(x => x.Value == scores.First().Value))
             {
-                return player1Score > 2 ? "Deuce" : $"{StringifyScore(player1Score)}-All";
+                return scores[player1] > 2 ? "Deuce" : $"{StringifyScore(scores[player1])}-All";
             }
 
             if (scores.All(x => x.Value < 4))
             {
-                return $"{StringifyScore(player1Score)}-{StringifyScore(player2Score)}";
+                return $"{StringifyScore(scores[player1])}-{StringifyScore(scores[player2])}";
             }
 
             var leader = scores.OrderByDescending(x => x.Value).First().Key;
-            return Math.Abs(player1Score - player2Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
+            return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
 
         private static string StringifyScore(int score)
