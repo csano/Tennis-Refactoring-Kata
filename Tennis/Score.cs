@@ -8,7 +8,7 @@ namespace Tennis
     {
         private readonly Player player1;
         private readonly Player player2;
-        private readonly Dictionary<Player, int> scores = new Dictionary<Player,int>();
+        private readonly Dictionary<Player, Scoring> scores = new Dictionary<Player, Scoring>();
 
         public Score(Player player1, Player player2)
         {
@@ -27,10 +27,10 @@ namespace Tennis
         {
             if (scores.All(x => x.Value == scores.First().Value))
             {
-                return scores[player1] > 2 ? "Deuce" : $"{StringifyScore(scores[player1])}-All";
+                return scores[player1] >= Scoring.Forty ? "Deuce" : $"{StringifyScore(scores[player1])}-All";
             }
 
-            if (scores.All(x => x.Value < 4))
+            if (scores.All(x => x.Value <= Scoring.Forty))
             {
                 return $"{StringifyScore(scores[player1])}-{StringifyScore(scores[player2])}";
             }
@@ -39,20 +39,17 @@ namespace Tennis
             return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
 
-        private static string StringifyScore(int score)
+        private static string StringifyScore(Scoring score)
         {
-            switch (score)
-            {
-                case 0:
-                    return "Love";
-                case 1:
-                    return "Fifteen";
-                case 2:
-                    return "Thirty";
-                default:
-                    return "Forty";
-            }
+            return score.ToString();
         }
 
+        private enum Scoring
+        {
+            Love = 0,
+            Fifteen = 1,
+            Thirty = 2,
+            Forty = 3
+        }
     }
 }
