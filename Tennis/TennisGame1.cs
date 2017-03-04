@@ -31,7 +31,7 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            if (scores[player1] == scores[player2])
+            if (scores.All(x => x.Value == scores.First().Value))
             {
                 return player1Score > 2 ? "Deuce" : $"{StringifyScore(player1Score)}-All";
             }
