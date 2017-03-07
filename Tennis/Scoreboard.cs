@@ -45,7 +45,7 @@ namespace Tennis
 
         public override string ToString()
         {
-            if (scores.All(x => x.Value == scores.First().Value))
+            if (playerScores.All(x=>x.Score == playerScores.First().Score))
             {
                 return scores[player1] >= Scoring.Forty ? "Deuce" : $"{scores[player2]}-All";
             }
