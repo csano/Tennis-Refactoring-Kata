@@ -2,21 +2,21 @@ namespace Tennis
 {
     internal class TennisGame1 : ITennisGame
     {
-        private readonly Score score;
+        private readonly Scoreboard scoreboard;
 
         public TennisGame1(Player player1, Player player2)
         {
-            score = new Score(player1, player2);
+            scoreboard = new Scoreboard(player1, player2);
         }
 
         public void AwardPointToPlayer(Player player)
         {
-            score.IncrementPlayerScore(player);
+            scoreboard.IncrementPlayerScore(player);
         }
 
         public string GetCurrentScore()
         {
-            return score.ToString();
+            return scoreboard.ToString();
         }
     }
 }

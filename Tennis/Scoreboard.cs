@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Tennis
 {
-    internal class Score
+    internal class Scoreboard
     {
         private readonly Player player1;
         private readonly Player player2;
         private readonly Dictionary<Player, Scoring> scores = new Dictionary<Player, Scoring>();
 
-        public Score(Player player1, Player player2)
+        public Scoreboard(Player player1, Player player2)
         {
             this.player1 = player1;
             this.player2 = player2;
