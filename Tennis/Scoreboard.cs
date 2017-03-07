@@ -7,10 +7,16 @@ namespace Tennis
     internal class PlayerScore
     {
         internal Player Player { get; set; }
+        internal Scoring Score { get; set; }
 
         public PlayerScore(Player player)
         {
             Player = player;
+        }
+
+        public void IncrementScore()
+        {
+            Score++;
         }
     }
 
@@ -33,6 +39,7 @@ namespace Tennis
 
         public void IncrementPlayerScore(Player player)
         {
+            playerScores.First(x => x.Player == player).IncrementScore();
             scores[player]++;
         }
 
@@ -51,13 +58,13 @@ namespace Tennis
             var leader = scores.OrderByDescending(x => x.Value).First().Key;
             return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
+    }
 
-        private enum Scoring
-        {
-            Love = 0,
-            Fifteen = 1,
-            Thirty = 2,
-            Forty = 3
-        }
+    internal enum Scoring
+    {
+        Love = 0,
+        Fifteen = 1,
+        Thirty = 2,
+        Forty = 3
     }
 }
