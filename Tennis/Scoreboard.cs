@@ -59,8 +59,8 @@ namespace Tennis
 
         public override string ToString()
         {
-            var result = new TieRule().Evaluate(playerScores[player1], playerScores[player2]);
-            if (result != null)
+            var tieRuleResult = new TieRule().Evaluate(playerScores[player1], playerScores[player2]);
+            if (tieRuleResult != null)
             {
                 return playerScores[player1].Score >= Scoring.Forty ? "Deuce" : $"{playerScores[player2].Score}-All";
             }
