@@ -55,7 +55,7 @@ namespace Tennis
                 return $"{scores[player1]}-{scores[player2]}";
             }
 
-            var leader = scores.OrderByDescending(x => x.Value).First().Key;
+            var leader = playerScores.OrderByDescending(x => x.Score).First().Player;
             return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
     }
