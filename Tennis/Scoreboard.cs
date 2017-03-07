@@ -50,7 +50,7 @@ namespace Tennis
                 return scores[player1] >= Scoring.Forty ? "Deuce" : $"{scores[player2]}-All";
             }
 
-            if (scores.All(x => x.Value <= Scoring.Forty))
+            if (playerScores.All(x => x.Score <= Scoring.Forty))
             {
                 return $"{scores[player1]}-{scores[player2]}";
             }
