@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Tennis
 {
-    internal class PlayerScore
+    public class PlayerScore
     {
         internal Player Player { get; set; }
         internal Scoring Score { get; set; }
@@ -19,6 +19,34 @@ namespace Tennis
             Score++;
         }
     }
+
+    public interface IScoringRule
+    {
+        string Evaluate(PlayerScore player1, PlayerScore player2);
+    }
+
+    public class TieRule : IScoringRule
+    {
+        public string Evaluate(PlayerScore player1, PlayerScore player2)
+        {
+            if (player1.Score == player2.Score)
+            {
+                if (player1.Score == Scoring.Forty)
+                {
+                    return "Deuce";
+                }
+                else
+                {
+                   return $"{player1.Score}-All"; 
+                }
+                
+            }
+
+            return null;
+        }
+    }
+
+
 
     internal class Scoreboard
     {
@@ -41,7 +69,8 @@ namespace Tennis
 
         public override string ToString()
         {
-            if (playerScores.All(x => x.Value.Score == playerScores.First().Value.Score))
+            var result = new TieRule().Evaluate(playerScores[player1], playerScores[player2]);
+            if (result != null)
             {
                 return playerScores[player1].Score >= Scoring.Forty ? "Deuce" : $"{playerScores[player2].Score}-All";
             }
