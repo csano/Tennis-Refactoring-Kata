@@ -6,11 +6,11 @@ namespace Tennis
 {
     internal class PlayerScore
     {
-        private readonly Player player;
+        internal Player Player { get; set; }
 
         public PlayerScore(Player player)
         {
-            this.player = player;
+            Player = player;
         }
     }
 
@@ -19,13 +19,12 @@ namespace Tennis
         private readonly Player player2;
         private readonly Dictionary<Player, Scoring> scores = new Dictionary<Player, Scoring>();
         private readonly List<PlayerScore> playerScores = new List<PlayerScore>();
-        private readonly PlayerScore playerScore;
         private readonly Player player1;
 
         public Scoreboard(Player player1, Player player2)
         {
-            playerScore = new PlayerScore(player1);
             playerScores.Add(new PlayerScore(player1));
+            playerScores.Add(new PlayerScore(player2));
             this.player1 = player1;
             this.player2 = player2;
             scores.Add(player1, 0);
