@@ -6,11 +6,11 @@ namespace Tennis
 {
     internal class PlayerScore
     {
-        private readonly Player player1;
+        private readonly Player player;
 
-        public PlayerScore(Player player1)
+        public PlayerScore(Player player)
         {
-            this.player1 = player1;
+            this.player = player;
         }
     }
 
@@ -37,16 +37,16 @@ namespace Tennis
         {
             if (scores.All(x => x.Value == scores.First().Value))
             {
-                return scores[playerScore.player1] >= Scoring.Forty ? "Deuce" : $"{scores[playerScore.player1]}-All";
+                return scores[playerScore.player] >= Scoring.Forty ? "Deuce" : $"{scores[playerScore.player]}-All";
             }
 
             if (scores.All(x => x.Value <= Scoring.Forty))
             {
-                return $"{scores[playerScore.player1]}-{scores[player2]}";
+                return $"{scores[playerScore.player]}-{scores[player2]}";
             }
 
             var leader = scores.OrderByDescending(x => x.Value).First().Key;
-            return Math.Abs(scores[playerScore.player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
+            return Math.Abs(scores[playerScore.player] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
 
         private enum Scoring
