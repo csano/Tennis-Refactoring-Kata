@@ -32,7 +32,7 @@ namespace Tennis
             if (player1.Score != player2.Score) {
                 return null;
             }
-            return player1.Score == Scoring.Forty ? "Deuce" : $"{player1.Score}-All";
+            return player1.Score >= Scoring.Forty ? "Deuce" : $"{player1.Score}-All";
         }
     }
 
@@ -62,7 +62,7 @@ namespace Tennis
             var tieRuleResult = new TieRule().Evaluate(playerScores[player1], playerScores[player2]);
             if (tieRuleResult != null)
             {
-                return playerScores[player1].Score >= Scoring.Forty ? "Deuce" : $"{playerScores[player2].Score}-All";
+                return tieRuleResult;
             }
 
             if (playerScores.All(x => x.Value.Score <= Scoring.Forty))
