@@ -29,20 +29,10 @@ namespace Tennis
     {
         public string Evaluate(PlayerScore player1, PlayerScore player2)
         {
-            if (player1.Score == player2.Score)
-            {
-                if (player1.Score == Scoring.Forty)
-                {
-                    return "Deuce";
-                }
-                else
-                {
-                   return $"{player1.Score}-All"; 
-                }
-                
+            if (player1.Score != player2.Score) {
+                return null;
             }
-
-            return null;
+            return player1.Score == Scoring.Forty ? "Deuce" : $"{player1.Score}-All";
         }
     }
 
