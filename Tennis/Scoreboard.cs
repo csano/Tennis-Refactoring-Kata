@@ -36,6 +36,20 @@ namespace Tennis
         }
     }
 
+    public class ScoreIsNotATieAndFortyOrUnderRule : IScoringRule
+    {
+        public string Evaluate(PlayerScore player1, PlayerScore player2)
+        {
+
+            if (player1.Score != player2.Score && player1.Score <= Scoring.Forty && player2.Score <= Scoring.Forty)
+            {
+                return $"{player1.Score}-{player2.Score}";
+            }
+
+            return null;
+        }
+    }
+
 
 
     internal class Scoreboard
