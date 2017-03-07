@@ -23,40 +23,36 @@ namespace Tennis
     internal class Scoreboard
     {
         private readonly Player player2;
-        private readonly Dictionary<Player, Scoring> scores = new Dictionary<Player, Scoring>();
-        private readonly List<PlayerScore> playerScores = new List<PlayerScore>();
+        private readonly Dictionary<Player, PlayerScore> playerScores = new Dictionary<Player, PlayerScore>();
         private readonly Player player1;
 
-        public Scoreboard(Player player1, Player player2)
+        public Scoreboard(Player player1, Player player2, Dictionary<Player, Scoring> scores)
         {
-            playerScores.Add(new PlayerScore(player1));
-            playerScores.Add(new PlayerScore(player2));
+            playerScores.Add(player1, new PlayerScore(player1));
+            playerScores.Add(player2, new PlayerScore(player2));
             this.player1 = player1;
             this.player2 = player2;
-            scores.Add(player1, 0);
-            scores.Add(player2, 0);
         }
 
         public void IncrementPlayerScore(Player player)
         {
-            playerScores.First(x => x.Player == player).IncrementScore();
-            scores[player]++;
+            playerScores[player].IncrementScore();
         }
 
         public override string ToString()
         {
-            if (playerScores.All(x => x.Score == playerScores.First().Score))
+            if (playerScores.All(x => x.Value.Score == playerScores.First().Value.Score))
             {
-                return scores[player1] >= Scoring.Forty ? "Deuce" : $"{scores[player2]}-All";
+                return playerScores[player1].Score >= Scoring.Forty ? "Deuce" : $"{playerScores[player2].Score}-All";
             }
 
-            if (playerScores.All(x => x.Score <= Scoring.Forty))
+            if (playerScores.All(x => x.Value.Score <= Scoring.Forty))
             {
-                return $"{scores[player1]}-{scores[player2]}";
+                return $"{playerScores[player1].Score}-{playerScores[player2].Score}";
             }
 
-            var leader = playerScores.OrderByDescending(x => x.Score).First().Player;
-            return Math.Abs(scores[player1] - scores[player2]) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
+            var leader = playerScores.OrderByDescending(x => x.Value.Score).First().Key;
+            return Math.Abs(playerScores[player1].Score - playerScores[player2].Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
     }
 
