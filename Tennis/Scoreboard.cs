@@ -73,7 +73,9 @@ namespace Tennis
 
         public override string ToString()
         {
-            var tieRuleResult = new TieRule().Evaluate(playerScores[player1], playerScores[player2]);
+            var player1Score = playerScores[player1];
+            var player2Score = playerScores[player2];
+            var tieRuleResult = new TieRule().Evaluate(player1Score, player2Score);
             if (tieRuleResult != null)
             {
                 return tieRuleResult;
@@ -81,11 +83,11 @@ namespace Tennis
 
             if (playerScores.All(x => x.Value.Score <= Scoring.Forty))
             {
-                return $"{playerScores[player1].Score}-{playerScores[player2].Score}";
+                return $"{player1Score.Score}-{player2Score.Score}";
             }
 
             var leader = playerScores.OrderByDescending(x => x.Value.Score).First().Key;
-            return Math.Abs(playerScores[player1].Score - playerScores[player2].Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
+            return Math.Abs(player1Score.Score - player2Score.Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
         }
     }
 
