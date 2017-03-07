@@ -54,16 +54,12 @@ namespace Tennis
 
     internal class Scoreboard
     {
-        private readonly Player player2;
         private readonly Dictionary<Player, PlayerScore> playerScores = new Dictionary<Player, PlayerScore>();
-        private readonly Player player1;
 
         public Scoreboard(Player player1, Player player2)
         {
             playerScores.Add(player1, new PlayerScore(player1));
             playerScores.Add(player2, new PlayerScore(player2));
-            this.player1 = player1;
-            this.player2 = player2;
         }
 
         public void IncrementPlayerScore(Player player)
@@ -73,17 +69,19 @@ namespace Tennis
 
         public override string ToString()
         {
-            var player1Score = playerScores[player1];
-            var player2Score = playerScores[player2];
+            var player1Score = playerScores.First().Value;
+            var player2Score = playerScores.Skip(1).First().Value;
+
             var tieRuleResult = new TieRule().Evaluate(player1Score, player2Score);
             if (tieRuleResult != null)
             {
                 return tieRuleResult;
             }
 
-            if (playerScores.All(x => x.Value.Score <= Scoring.Forty))
+            var scoreIsNotATieResult = new ScoreIsNotATieAndFortyOrUnderRule().Evaluate(player1Score, player2Score);
+            if (scoreIsNotATieResult != null)
             {
-                return $"{player1Score.Score}-{player2Score.Score}";
+                return scoreIsNotATieResult;
             }
 
             var leader = playerScores.OrderByDescending(x => x.Value.Score).First().Key;
