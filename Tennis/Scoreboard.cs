@@ -26,7 +26,7 @@ namespace Tennis
         private readonly Dictionary<Player, PlayerScore> playerScores = new Dictionary<Player, PlayerScore>();
         private readonly Player player1;
 
-        public Scoreboard(Player player1, Player player2, Dictionary<Player, Scoring> scores)
+        public Scoreboard(Player player1, Player player2)
         {
             playerScores.Add(player1, new PlayerScore(player1));
             playerScores.Add(player2, new PlayerScore(player2));
