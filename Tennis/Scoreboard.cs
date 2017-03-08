@@ -40,9 +40,10 @@ namespace Tennis
 
     public class ScoreIsNotATieAndFortyOrUnderCondition : ConditionBase
     {
+        public Func<PlayerScore, PlayerScore, bool> Condition = (player1Score, player2Score) => !PlayerScoresAreEqual(player1Score, player2Score) && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score);
         public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if (!PlayerScoresAreEqual(player1Score, player2Score) && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score))
+            if (Condition(player1Score, player2Score))
             {
                 return $"{player1Score.Score}-{player2Score.Score}";
             }
@@ -94,15 +95,7 @@ namespace Tennis
 
         public string Generate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            foreach (var rule in GetScoringRules())
-            {
-                var result = rule.Evaluate(player1Score, player2Score);
-                if (!string.IsNullOrEmpty(result))
-                {
-                    return result;
-                }
-            }
-            return "";
+            return GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => x != null);
         }
     }
 
