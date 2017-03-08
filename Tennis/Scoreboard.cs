@@ -36,11 +36,6 @@ namespace Tennis
             }
             return null;
         }
-
-        private static bool PlayerScoresAreEqual(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            return player1Score.Score == player2Score.Score;
-        }
     }
 
     public class ScoreIsNotATieAndFortyOrUnderCondition : IScoringCondition
