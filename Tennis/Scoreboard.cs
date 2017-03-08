@@ -82,7 +82,7 @@ namespace Tennis
 
     internal class RuleFactory
     {
-        private static List<IScoringRule> GetScoringRules()
+        private static IEnumerable<IScoringRule> GetScoringRules()
         {
             return new List<IScoringRule>
             {
