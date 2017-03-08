@@ -41,12 +41,10 @@ namespace Tennis
     {
         public string Evaluate(PlayerScore player1, PlayerScore player2)
         {
-
             if (player1.Score != player2.Score && ScoreIsLessThanOrEqualToForty(player1) && ScoreIsLessThanOrEqualToForty(player2))
             {
                 return $"{player1.Score}-{player2.Score}";
             }
-
             return null;
         }
 
