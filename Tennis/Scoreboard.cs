@@ -26,9 +26,9 @@ namespace Tennis
         string Evaluate(PlayerScore player1Score, PlayerScore player2Score);
     }
 
-    public class TieCondition : IScoringCondition
+    public class TieCondition : ConditionBase
     {
-        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
             if (PlayerScoresAreEqual(player1Score, player2Score))
             {
