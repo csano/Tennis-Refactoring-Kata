@@ -11,7 +11,7 @@ namespace Tennis
 
         public void AwardPointToPlayer(Player player)
         {
-            scoreboard.IncrementPlayerScore(player);
+            scoreboard.GivePointToPlayer(player);
         }
 
         public string GetCurrentScore()
