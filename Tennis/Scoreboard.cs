@@ -23,16 +23,16 @@ namespace Tennis
 
     public interface IScoringRule
     {
-        string Evaluate(PlayerScore player1, PlayerScore player2);
+        string Evaluate(PlayerScore player1Score, PlayerScore player2Score);
     }
 
     public class TieRule : IScoringRule
     {
-        public string Evaluate(PlayerScore player1, PlayerScore player2)
+        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if (player1.Score == player2.Score)
+            if (player1Score.Score == player2Score.Score)
             {
-                return player1.Score >= Scoring.Forty ? "Deuce" : $"{player1.Score}-All";
+                return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
             }
             return null;
         }
@@ -40,11 +40,11 @@ namespace Tennis
 
     public class ScoreIsNotATieAndFortyOrUnderRule : IScoringRule
     {
-        public string Evaluate(PlayerScore player1, PlayerScore player2)
+        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if (player1.Score != player2.Score && ScoreIsLessThanOrEqualToForty(player1) && ScoreIsLessThanOrEqualToForty(player2))
+            if (player1Score.Score != player2Score.Score && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score))
             {
-                return $"{player1.Score}-{player2.Score}";
+                return $"{player1Score.Score}-{player2Score.Score}";
             }
             return null;
         }
@@ -69,11 +69,11 @@ namespace Tennis
 
     internal class WinnerRule : RuleBase
     {
-        public override string Evaluate(PlayerScore player1, PlayerScore player2)
+        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && CalculateScoreDifferential(player1, player2) > 1)
+            if ((player1Score.Score > Scoring.Forty || player2Score.Score > Scoring.Forty) && CalculateScoreDifferential(player1Score, player2Score) > 1)
             {
-                var highest = GetHighestPlayerScore(player1, player2);
+                var highest = GetHighestPlayerScore(player1Score, player2Score);
                 return $"Win for {highest.Player.Name}";
             }
             return null;
@@ -82,8 +82,6 @@ namespace Tennis
 
     internal class RuleFactory
     {
-        private static List<IScoringRule> scoringRules = GetScoringRules();
-
         private static List<IScoringRule> GetScoringRules()
         {
             return new List<IScoringRule>
