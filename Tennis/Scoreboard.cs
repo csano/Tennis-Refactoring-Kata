@@ -72,6 +72,24 @@ namespace Tennis
         }
     }
 
+    internal class WinnerRule : IScoringRule
+    {
+        private static PlayerScore GetHighestPlayerScore(PlayerScore player1Score, PlayerScore player2Score)
+        {
+            return player1Score.Score >= player2Score.Score ? player1Score : player2Score;
+        }
+
+        public string Evaluate(PlayerScore player1, PlayerScore player2)
+        {
+            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && Math.Abs(player1.Score - player2.Score) >= 1)
+            {
+                var highest = GetHighestPlayerScore(player1, player2);
+                return $"Win for {highest.Player.Name}";
+            }
+            return null;
+        }
+    }
+
     internal class Scoreboard
     {
         private readonly Dictionary<Player, PlayerScore> playerScores = new Dictionary<Player, PlayerScore>();
@@ -110,8 +128,13 @@ namespace Tennis
                 return advantageRuleResult;
             }
 
-            var leader = playerScores.OrderByDescending(x => x.Value.Score).First().Key;
-            return   $"Win for {leader.Name}";
+            var winningRuleResult = new WinnerRule().Evaluate(player1Score, player2Score);
+            if (winningRuleResult != null)
+            {
+                return winningRuleResult;
+            }
+
+            return string.Empty;
         }
     }
 
