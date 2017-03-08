@@ -73,8 +73,7 @@ namespace Tennis
         {
             if (AtLeastOnePlayerHasScoreGreaterThan(player1Score, player2Score, Scoring.Forty) && ScoreDifferential(player1Score, player2Score) > 1)
             {
-                var highest = GetHighestPlayerScore(player1Score, player2Score);
-                return $"Win for {highest.Player.Name}";
+                return $"Win for {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
             }
             return null;
         }
