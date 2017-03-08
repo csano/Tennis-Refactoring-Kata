@@ -64,7 +64,7 @@ namespace Tennis
 
         public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if (Math.Abs(player1Score.Score - player2Score.Score) == 1)
+            if (player1Score.Score >= Scoring.Forty && player2Score.Score >= Scoring.Forty && Math.Abs(player1Score.Score - player2Score.Score) == 1)
             {
                 return $"Advantage {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
             }
@@ -81,12 +81,41 @@ namespace Tennis
 
         public string Evaluate(PlayerScore player1, PlayerScore player2)
         {
-            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && Math.Abs(player1.Score - player2.Score) >= 1)
+            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && Math.Abs(player1.Score - player2.Score) > 1)
             {
                 var highest = GetHighestPlayerScore(player1, player2);
                 return $"Win for {highest.Player.Name}";
             }
             return null;
+        }
+    }
+
+    internal class RuleFactory
+    {
+        private static List<IScoringRule> scoringRules = GetScoringRules();
+
+        private static List<IScoringRule> GetScoringRules()
+        {
+            return new List<IScoringRule>
+            {
+                new TieRule(),
+                new AdvantageRule(),
+                new ScoreIsNotATieAndFortyOrUnderRule(),
+                new WinnerRule()
+            };
+        }
+
+        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        {
+            foreach (var rule in GetScoringRules())
+            {
+                var result = rule.Evaluate(player1Score, player2Score);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    return result;
+                }
+            }
+            return "";
         }
     }
 
@@ -110,31 +139,7 @@ namespace Tennis
             var player1Score = playerScores.First().Value;
             var player2Score = playerScores.Skip(1).First().Value;
 
-            var tieRuleResult = new TieRule().Evaluate(player1Score, player2Score);
-            if (tieRuleResult != null)
-            {
-                return tieRuleResult;
-            }
-
-            var scoreIsNotATieResult = new ScoreIsNotATieAndFortyOrUnderRule().Evaluate(player1Score, player2Score);
-            if (scoreIsNotATieResult != null)
-            {
-                return scoreIsNotATieResult;
-            }
-
-            var advantageRuleResult = new AdvantageRule().Evaluate(player1Score, player2Score);
-            if (advantageRuleResult != null)
-            {
-                return advantageRuleResult;
-            }
-
-            var winningRuleResult = new WinnerRule().Evaluate(player1Score, player2Score);
-            if (winningRuleResult != null)
-            {
-                return winningRuleResult;
-            }
-
-            return string.Empty;
+            return new RuleFactory().Evaluate(player1Score, player2Score);
         }
     }
 
