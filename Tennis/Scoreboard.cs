@@ -38,9 +38,9 @@ namespace Tennis
         }
     }
 
-    public class ScoreIsNotATieAndFortyOrUnderCondition : IScoringCondition
+    public class ScoreIsNotATieAndFortyOrUnderCondition : ConditionBase
     {
-        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
             if (player1Score.Score != player2Score.Score && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score))
             {
@@ -130,7 +130,7 @@ namespace Tennis
         }
     }
 
-    internal enum Scoring
+    public enum Scoring
     {
         Love = 0,
         Fifteen = 1,
