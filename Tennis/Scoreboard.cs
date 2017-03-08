@@ -54,15 +54,9 @@ namespace Tennis
         }
     }
 
-
-    internal class AdvantageRule : IScoringRule
+    internal class AdvantageRule : RuleBase
     {
-        private static PlayerScore GetHighestPlayerScore(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            return player1Score.Score >= player2Score.Score ? player1Score : player2Score;
-        }
-
-        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
             if (player1Score.Score >= Scoring.Forty && player2Score.Score >= Scoring.Forty && Math.Abs(player1Score.Score - player2Score.Score) == 1)
             {
