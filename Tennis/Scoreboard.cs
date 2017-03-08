@@ -80,7 +80,7 @@ namespace Tennis
         }
     }
 
-    internal class RuleFactory
+    internal class ScoreDisplay
     {
         private static IEnumerable<IScoringRule> GetScoringRules()
         {
@@ -93,7 +93,7 @@ namespace Tennis
             };
         }
 
-        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        public string Generate(PlayerScore player1Score, PlayerScore player2Score)
         {
             foreach (var rule in GetScoringRules())
             {
@@ -127,7 +127,7 @@ namespace Tennis
             var player1Score = playerScores.First().Value;
             var player2Score = playerScores.Skip(1).First().Value;
 
-            return new RuleFactory().Evaluate(player1Score, player2Score);
+            return new ScoreDisplay().Generate(player1Score, player2Score);
         }
     }
 
