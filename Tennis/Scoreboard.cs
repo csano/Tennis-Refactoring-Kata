@@ -108,25 +108,22 @@ namespace Tennis
 
     internal class Scoreboard
     {
-        private readonly Dictionary<Player, PlayerScore> playerScores = new Dictionary<Player, PlayerScore>();
+        private readonly PlayerScore[] playerScores = new PlayerScore[2];
 
         public Scoreboard(Player player1, Player player2)
         {
-            playerScores.Add(player1, new PlayerScore(player1));
-            playerScores.Add(player2, new PlayerScore(player2));
+            playerScores[0] = new PlayerScore(player1);
+            playerScores[1] = new PlayerScore(player2);
         }
 
         public void IncrementPlayerScore(Player player)
         {
-            playerScores[player].IncrementScore();
+            playerScores.First(x => x.Player == player).IncrementScore();
         }
 
         public override string ToString()
         {
-            var player1Score = playerScores.First().Value;
-            var player2Score = playerScores.Skip(1).First().Value;
-
-            return new ScoreDisplay().Generate(player1Score, player2Score);
+            return new ScoreDisplay().Generate(playerScores[0], playerScores[1]);
         }
     }
 
