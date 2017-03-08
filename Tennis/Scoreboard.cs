@@ -71,7 +71,7 @@ namespace Tennis
     {
         public override string Evaluate(PlayerScore player1, PlayerScore player2)
         {
-            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && Math.Abs(player1.Score - player2.Score) > 1)
+            if ((player1.Score > Scoring.Forty || player2.Score > Scoring.Forty) && CalculateScoreDifferential(player1, player2) > 1)
             {
                 var highest = GetHighestPlayerScore(player1, player2);
                 return $"Win for {highest.Player.Name}";
