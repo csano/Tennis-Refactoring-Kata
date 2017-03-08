@@ -116,7 +116,7 @@ namespace Tennis
             playerScores[1] = new PlayerScore(player2);
         }
 
-        public void IncrementPlayerScore(Player player)
+        public void GivePointToPlayer(Player player)
         {
             playerScores.First(x => x.Player == player).IncrementScore();
         }
@@ -132,6 +132,8 @@ namespace Tennis
         Love = 0,
         Fifteen = 1,
         Thirty = 2,
-        Forty = 3
+        Forty = 3,
+        Advantage = 4,
+        Winner = 5
     }
 }
