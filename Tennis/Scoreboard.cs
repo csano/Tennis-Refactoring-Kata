@@ -42,7 +42,7 @@ namespace Tennis
     {
         public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if (player1Score.Score != player2Score.Score && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score))
+            if (!PlayerScoresAreEqual(player1Score, player2Score) && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score))
             {
                 return $"{player1Score.Score}-{player2Score.Score}";
             }
