@@ -21,12 +21,12 @@ namespace Tennis
         }
     }
 
-    public interface IScoringRule
+    public interface IScoringCondition
     {
         string Evaluate(PlayerScore player1Score, PlayerScore player2Score);
     }
 
-    public class TieRule : IScoringRule
+    public class TieCondition : IScoringCondition
     {
         public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
@@ -38,7 +38,7 @@ namespace Tennis
         }
     }
 
-    public class ScoreIsNotATieAndFortyOrUnderRule : IScoringRule
+    public class ScoreIsNotATieAndFortyOrUnderCondition : IScoringCondition
     {
         public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
@@ -55,7 +55,7 @@ namespace Tennis
         }
     }
 
-    internal class AdvantageRule : RuleBase
+    internal class AdvantageCondition : ConditionBase
     {
         public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
@@ -67,7 +67,7 @@ namespace Tennis
         }
     }
 
-    internal class WinnerRule : RuleBase
+    internal class WinnerCondition : ConditionBase
     {
         public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
@@ -87,14 +87,14 @@ namespace Tennis
 
     internal class ScoreDisplay
     {
-        private static IEnumerable<IScoringRule> GetScoringRules()
+        private static IEnumerable<IScoringCondition> GetScoringRules()
         {
-            return new List<IScoringRule>
+            return new List<IScoringCondition>
             {
-                new TieRule(),
-                new AdvantageRule(),
-                new ScoreIsNotATieAndFortyOrUnderRule(),
-                new WinnerRule()
+                new TieCondition(),
+                new AdvantageCondition(),
+                new ScoreIsNotATieAndFortyOrUnderCondition(),
+                new WinnerCondition()
             };
         }
 
