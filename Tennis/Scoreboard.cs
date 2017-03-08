@@ -59,7 +59,7 @@ namespace Tennis
     {
         public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            if ((player1Score.Score > Scoring.Forty || player2Score.Score > Scoring.Forty) && CalculateScoreDifferential(player1Score, player2Score) == 1)
+            if (AtLeastOnePlayerHasScoreGreaterThan(player1Score, player2Score, Scoring.Forty) && CalculateScoreDifferential(player1Score, player2Score) == 1)
             {
                 return $"Advantage {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
             }
