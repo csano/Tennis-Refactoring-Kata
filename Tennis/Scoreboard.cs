@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 
 namespace Tennis
 {
@@ -51,6 +52,22 @@ namespace Tennis
     }
 
 
+    internal class AdvantageRule : IScoringRule
+    {
+        private static PlayerScore GetHighestPlayerScore(PlayerScore player1Score, PlayerScore player2Score)
+        {
+            return player1Score.Score >= player2Score.Score ? player1Score : player2Score;
+        }
+
+        public string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        {
+            if (Math.Abs(player1Score.Score - player2Score.Score) == 1)
+            {
+                return $"Advantage {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
+            }
+            return null;
+        }
+    }
 
     internal class Scoreboard
     {
@@ -84,8 +101,14 @@ namespace Tennis
                 return scoreIsNotATieResult;
             }
 
+            var advantageRuleResult = new AdvantageRule().Evaluate(player1Score, player2Score);
+            if (advantageRuleResult != null)
+            {
+                return advantageRuleResult;
+            }
+
             var leader = playerScores.OrderByDescending(x => x.Value.Score).First().Key;
-            return Math.Abs(player1Score.Score - player2Score.Score) == 1 ? $"Advantage {leader.Name}" : $"Win for {leader.Name}";
+            return   $"Win for {leader.Name}";
         }
     }
 
