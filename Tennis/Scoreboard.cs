@@ -78,11 +78,6 @@ namespace Tennis
             }
             return null;
         }
-
-        private static bool AtLeastOnePlayerHasScoreGreaterThan(PlayerScore player1Score, PlayerScore player2Score, Scoring score)
-        {
-            return player1Score.Score > score || player2Score.Score > score;
-        }
     }
 
     internal class ScoreDisplay
