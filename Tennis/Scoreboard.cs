@@ -24,11 +24,11 @@ namespace Tennis
         }
     }
 
-    internal class TieRepresentation : IConditionStringConverter
+    internal class TieConditionStringConverter : IConditionStringConverter
     {
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)
         {
-            throw new NotImplementedException();
+            return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
         }
     }
 
