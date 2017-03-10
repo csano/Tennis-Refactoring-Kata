@@ -4,7 +4,7 @@ namespace Tennis
 {
     internal class ScoreIsNotATieScoringConditionStringConverter : IScoringConditionStringConverter
     {
-        public Type ConditionType => typeof(ScoreIsNotATieRule);
+        public Type ConditionType => typeof(ScoreIsNotATieScoringCondition);
 
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)
         {

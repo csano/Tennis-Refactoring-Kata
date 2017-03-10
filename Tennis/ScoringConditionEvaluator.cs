@@ -11,7 +11,7 @@ namespace Tennis
             {
                 new TieScoringCondition(),
                 new AdvantageScoringCondition(),
-                new ScoreIsNotATieRule(),
+                new ScoreIsNotATieScoringCondition(),
                 new WinnerScoringCondition()
             };
         }
