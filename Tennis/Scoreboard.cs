@@ -29,7 +29,9 @@ namespace Tennis
         {
             return new Dictionary<Type, IConditionStringConverter>
             {
-                { typeof(TieRule), new TieConditionStringConverter() }
+                { typeof(TieRule), new TieConditionStringConverter() },
+                { typeof(ScoreIsNotATieRule), new ScoreIsNotATieStringConverter() },
+                { typeof(AdvantageRule), new AdvantageRuleStringConverter() },
             };
         }
 
