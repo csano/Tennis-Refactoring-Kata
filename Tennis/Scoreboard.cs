@@ -40,15 +40,6 @@ namespace Tennis
             return GetStringConverters().Where(x => x.Key == scoringCondition.GetType()).Select(x => x.Value).FirstOrDefault()?.Convert(player1Score, player2Score);
         }
     }
-    internal class TieConditionStringConverter : IConditionStringConverter
-    {
-        public string Convert(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
-        }
-
-        public Type ConditionType => typeof(TieRule);
-    }
 
     internal interface IConditionStringConverter
     {
