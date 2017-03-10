@@ -17,7 +17,7 @@ namespace Tennis
             playerScores.First(x => x.Player == player).IncrementScore();
         }
 
-        public override string ToString()
+        public string Announce()
         {
             var successCondition = new ScoringConditionEvaluator().Evaluate(playerScores[0], playerScores[1]);
             return successCondition != null ? new RuleStringConverter().Convert(successCondition, playerScores[0], playerScores[1]) : string.Empty;

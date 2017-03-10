@@ -14,9 +14,9 @@ namespace Tennis
             scoreboard.GivePointToPlayer(player);
         }
 
-        public string GetCurrentScore()
+        public string AnnounceScore()
         {
-            return scoreboard.ToString();
+            return scoreboard.Announce();
         }
     }
 }
