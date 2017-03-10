@@ -13,6 +13,7 @@ namespace Tennis
                 { typeof(TieRule), new TieConditionStringConverter() },
                 { typeof(ScoreIsNotATieRule), new ScoreIsNotATieStringConverter() },
                 { typeof(AdvantageRule), new AdvantageRuleStringConverter() },
+                { typeof(WinnerCondition), new WinnerStringConverter() }
             };
         }
 
