@@ -1,68 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Tennis
 {
-    public interface IScoringCondition
-    {
-        string Evaluate(PlayerScore player1Score, PlayerScore player2Score);
-    }
-
-    public class TieCondition : ConditionBase
-    {
-        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            if (PlayerScoresAreEqual(player1Score, player2Score))
-            {
-                return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
-            }
-            return null;
-        }
-    }
-
-    public class ScoreIsNotATieAndFortyOrUnderCondition : ConditionBase
-    {
-        public Func<PlayerScore, PlayerScore, bool> Condition = (player1Score, player2Score) => !PlayerScoresAreEqual(player1Score, player2Score) && ScoreIsLessThanOrEqualToForty(player1Score) && ScoreIsLessThanOrEqualToForty(player2Score);
-        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            if (Condition(player1Score, player2Score))
-            {
-                return $"{player1Score.Score}-{player2Score.Score}";
-            }
-            return null;
-        }
-
-        private static bool ScoreIsLessThanOrEqualToForty(PlayerScore player)
-        {
-            return player.Score <= Scoring.Forty;
-        }
-    }
-
-    internal class AdvantageCondition : ConditionBase
-    {
-        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            if (AtLeastOnePlayerHasScoreGreaterThan(player1Score, player2Score, Scoring.Forty) && ScoreDifferential(player1Score, player2Score) == 1)
-            {
-                return $"Advantage {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
-            }
-            return null;
-        }
-    }
-
-    internal class WinnerCondition : ConditionBase
-    {
-        public override string Evaluate(PlayerScore player1Score, PlayerScore player2Score)
-        {
-            if (AtLeastOnePlayerHasScoreGreaterThan(player1Score, player2Score, Scoring.Forty) && ScoreDifferential(player1Score, player2Score) > 1)
-            {
-                return $"Win for {GetHighestPlayerScore(player1Score, player2Score).Player.Name}";
-            }
-            return null;
-        }
-    }
-
     internal class ScoreDisplay
     {
         private static IEnumerable<IScoringCondition> GetScoringRules()
