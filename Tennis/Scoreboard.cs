@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +22,19 @@ namespace Tennis
             return null;
                 //GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => x != null);
         }
+    }
+
+    internal class TieRepresentation : IConditionStringConverter
+    {
+        public string Convert(PlayerScore player1Score, PlayerScore player2Score)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal interface IConditionStringConverter
+    {
+        string Convert(PlayerScore player1Score, PlayerScore player2Score);
     }
 
     internal class Scoreboard
