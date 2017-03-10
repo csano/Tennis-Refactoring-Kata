@@ -8,13 +8,11 @@ namespace Tennis
     {
         private static IEnumerable<IScoringConditionStringConverter> GetStringConverters()
         {
-            return new List<IScoringConditionStringConverter>
-            {
-                 new TieScoringConditionStringConverter() ,
-                 new ScoreIsNotATieScoringConditionStringConverter() ,
-                 new AdvantageScoringConditionStringConverter() ,
-                 new WinnerScoringConditionStringConverter()
-            };
+            return AppDomain.CurrentDomain
+                            .GetAssemblies()
+                            .SelectMany(s => s.GetTypes())
+                            .Where(p => typeof(IScoringConditionStringConverter).IsAssignableFrom(p) && !p.IsInterface)
+                            .Select(x => (IScoringConditionStringConverter)Activator.CreateInstance(x));
         }
 
         public string Convert(IScoringCondition scoringCondition, PlayerScore player1Score, PlayerScore player2Score) 
