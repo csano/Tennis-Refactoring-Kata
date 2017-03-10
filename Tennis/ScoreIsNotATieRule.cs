@@ -2,7 +2,7 @@ using System;
 
 namespace Tennis
 {
-    public class ScoreIsNotATieRule : ConditionBase
+    public class ScoreIsNotATieRule : ScoringConditionBase
     {
         public override bool Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {

@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    public class TieCondition : ConditionBase
+    public class TieScoringCondition : ScoringConditionBase
     {
         public override bool Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {

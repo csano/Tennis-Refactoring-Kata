@@ -2,7 +2,7 @@ using System;
 
 namespace Tennis
 {
-    public abstract class ConditionBase : IScoringCondition
+    public abstract class ScoringConditionBase : IScoringCondition
     {
         public abstract bool Evaluate(PlayerScore player1Score, PlayerScore player2Score);
 
