@@ -2,7 +2,7 @@ using System;
 
 namespace Tennis
 {
-    internal class TieConditionStringConverter : IConditionStringConverter
+    internal class TieScoringConditionStringConverter : IScoringConditionStringConverter
     {
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)
         {

@@ -6,11 +6,11 @@ namespace Tennis
 {
     internal class RuleStringConverter
     {
-        private static IEnumerable<IConditionStringConverter> GetStringConverters()
+        private static IEnumerable<IScoringConditionStringConverter> GetStringConverters()
         {
-            return new List<IConditionStringConverter>
+            return new List<IScoringConditionStringConverter>
             {
-                 new TieConditionStringConverter() ,
+                 new TieScoringConditionStringConverter() ,
                  new ScoreIsNotATieStringConverter() ,
                  new AdvantageRuleStringConverter() ,
                  new WinnerStringConverter()

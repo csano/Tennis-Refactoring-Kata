@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="AdvantageRule.cs" />
     <Compile Include="AdvantageRuleStringConverter.cs" />
-    <Compile Include="IConditionStringConverter.cs" />
+    <Compile Include="IScoringConditionStringConverter.cs" />
     <Compile Include="IScoringCondition.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerScore.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="ScoreIsNotATieStringConverter.cs" />
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
-    <Compile Include="TieConditionStringConverter.cs" />
+    <Compile Include="TieScoringConditionStringConverter.cs" />
     <Compile Include="TieScoringCondition.cs" />
     <Compile Include="WinnerCondition.cs" />
     <Compile Include="WinnerStringConverter.cs" />
