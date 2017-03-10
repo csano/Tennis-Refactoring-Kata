@@ -60,7 +60,7 @@
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
     <Compile Include="TieConditionStringConverter.cs" />
-    <Compile Include="TieCondition.cs" />
+    <Compile Include="TieScoringCondition.cs" />
     <Compile Include="WinnerCondition.cs" />
     <Compile Include="WinnerStringConverter.cs" />
   </ItemGroup>
