@@ -11,9 +11,9 @@ namespace Tennis
             return new List<IScoringConditionStringConverter>
             {
                  new TieScoringConditionStringConverter() ,
-                 new ScoreIsNotATieStringConverter() ,
-                 new AdvantageRuleStringConverter() ,
-                 new WinnerStringConverter()
+                 new ScoreIsNotATieScoringConditionStringConverter() ,
+                 new AdvantageScoringConditionStringConverter() ,
+                 new WinnerScoringConditionStringConverter()
             };
         }
 

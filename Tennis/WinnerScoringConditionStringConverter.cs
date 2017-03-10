@@ -2,7 +2,7 @@ using System;
 
 namespace Tennis
 {
-    internal class WinnerStringConverter : IScoringConditionStringConverter
+    internal class WinnerScoringConditionStringConverter : IScoringConditionStringConverter
     {
         public Type ConditionType => typeof (WinnerScoringCondition);
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)

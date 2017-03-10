@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvantageRule.cs" />
+    <Compile Include="AdvantageScoringCondition.cs" />
     <Compile Include="AdvantageRuleStringConverter.cs" />
     <Compile Include="IScoringConditionStringConverter.cs" />
     <Compile Include="IScoringCondition.cs" />
@@ -56,13 +56,13 @@
     <Compile Include="RuleStringConverter.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="ScoreIsNotATieRule.cs" />
-    <Compile Include="ScoreIsNotATieStringConverter.cs" />
+    <Compile Include="ScoreIsNotATieScoringConditionStringConverter.cs" />
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
     <Compile Include="TieScoringConditionStringConverter.cs" />
     <Compile Include="TieScoringCondition.cs" />
-    <Compile Include="WinnerCondition.cs" />
-    <Compile Include="WinnerStringConverter.cs" />
+    <Compile Include="WinnerScoringCondition.cs" />
+    <Compile Include="WinnerScoringConditionStringConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

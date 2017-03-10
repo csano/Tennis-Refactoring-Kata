@@ -2,9 +2,9 @@ using System;
 
 namespace Tennis
 {
-    internal class AdvantageRuleStringConverter : IScoringConditionStringConverter
+    internal class AdvantageScoringConditionStringConverter : IScoringConditionStringConverter
     {
-        public Type ConditionType => typeof(AdvantageRule);
+        public Type ConditionType => typeof(AdvantageScoringCondition);
 
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)
         {
