@@ -59,7 +59,6 @@
     <Compile Include="ScoreIsNotATieStringConverter.cs" />
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
-    <Compile Include="Test.cs" />
     <Compile Include="TieConditionStringConverter.cs" />
     <Compile Include="TieRule.cs" />
     <Compile Include="WinnerCondition.cs" />
