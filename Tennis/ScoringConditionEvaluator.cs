@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Tennis
 {
-    internal class RuleEvaluator
+    internal class ScoringConditionEvaluator
     {
         private static IEnumerable<IScoringCondition> GetScoringRules()
         {
