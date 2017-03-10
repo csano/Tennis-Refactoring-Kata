@@ -50,8 +50,6 @@
     <Compile Include="RuleBase.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="TennisGame.cs" />
-    <Compile Include="TennisGame2.cs" />
-    <Compile Include="TennisGame3.cs" />
     <Compile Include="TennisTests.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>

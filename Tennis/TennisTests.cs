@@ -59,20 +59,6 @@ namespace Tennis
             CheckAllScores(game, player1, player2);
         }
 
-        [Test]
-        public void CheckTennisGame2()
-        {
-            var game = new TennisGame2(player1, player2);
-            CheckAllScores(game, player1, player2);
-        }
-
-        [Test]
-        public void CheckTennisGame3()
-        {
-            var game = new TennisGame3(player1, player2);
-            CheckAllScores(game, player1, player2);
-        }
-
         private void CheckAllScores(ITennisGame game, Player player1, Player player2)
         {
             var highestScore = Math.Max(player1Score, player2Score);
@@ -85,7 +71,6 @@ namespace Tennis
             }
             Assert.AreEqual(expectedScore, game.GetCurrentScore());
         }
-
     }
 
     [TestFixture]
@@ -98,20 +83,6 @@ namespace Tennis
         public void CheckGame1()
         {
             var game = new TennisGame(player1, player2);
-            RealisticTennisGame(game, player1, player2);
-        }
-
-        [Test]
-        public void CheckGame2()
-        {
-            var game = new TennisGame2(player1, player2);
-            RealisticTennisGame(game, player1, player2);
-        }
-
-        [Test]
-        public void CheckGame3()
-        {
-            var game = new TennisGame3(player1, player2);
             RealisticTennisGame(game, player1, player2);
         }
 
