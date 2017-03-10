@@ -17,23 +17,40 @@ namespace Tennis
             };
         }
 
-        public string Generate(PlayerScore player1Score, PlayerScore player2Score)
+        public bool Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            return null;
-                //GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => x != null);
+            return GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => true);
         }
     }
 
+    internal class RuleStringConverter
+    {
+        private static Dictionary<Type, IConditionStringConverter> GetStringConverters()
+        {
+            return new Dictionary<Type, IConditionStringConverter>
+            {
+                { typeof(TieRule), new TieConditionStringConverter() }
+            };
+        }
+
+        public string Convert(IScoringCondition scoringCondition, PlayerScore player1Score, PlayerScore player2Score) 
+        {
+            return GetStringConverters().Where(x => x.Key == scoringCondition.GetType()).Select(x => x.Value).FirstOrDefault()?.Convert(player1Score, player2Score);
+        }
+    }
     internal class TieConditionStringConverter : IConditionStringConverter
     {
         public string Convert(PlayerScore player1Score, PlayerScore player2Score)
         {
             return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
         }
+
+        public Type ConditionType => typeof(TieRule);
     }
 
     internal interface IConditionStringConverter
     {
+        Type ConditionType { get; }
         string Convert(PlayerScore player1Score, PlayerScore player2Score);
     }
 
@@ -54,7 +71,14 @@ namespace Tennis
 
         public override string ToString()
         {
-            return new RuleEvaluator().Generate(playerScores[0], playerScores[1]);
+            /*
+            var successCondition = new RuleEvaluator().Evaluate(playerScores[0], playerScores[1]);
+            if (successCondition)
+            {
+                return new RuleStringConverter().Convert(successCondition, playerScores[0], playerScores[1]);
+            }
+            */
+            return "";
         }
     }
 
