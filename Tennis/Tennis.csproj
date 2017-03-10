@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
     <Compile Include="RuleBase.cs" />
+    <Compile Include="RuleEvaluator.cs" />
     <Compile Include="RuleStringConverter.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="ScoreIsNotATieRule.cs" />
