@@ -9,7 +9,7 @@ namespace Tennis
         {
             return new List<IScoringCondition>
             {
-                new TieRule(),
+                new TieCondition(),
                 new AdvantageRule(),
                 new ScoreIsNotATieRule(),
                 new WinnerCondition()

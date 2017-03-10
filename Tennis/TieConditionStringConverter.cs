@@ -9,6 +9,6 @@ namespace Tennis
             return player1Score.Score >= Scoring.Forty ? "Deuce" : $"{player1Score.Score}-All";
         }
 
-        public Type ConditionType => typeof(TieRule);
+        public Type ConditionType => typeof(TieCondition);
     }
 }
