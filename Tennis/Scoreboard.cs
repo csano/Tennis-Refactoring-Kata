@@ -23,14 +23,4 @@ namespace Tennis
             return successCondition != null ? new RuleStringConverter().Convert(successCondition, playerScores[0], playerScores[1]) : string.Empty;
         }
     }
-
-    public enum Scoring
-    {
-        Love = 0,
-        Fifteen = 1,
-        Thirty = 2,
-        Forty = 3,
-        Advantage = 4,
-        Winner = 5
-    }
 }

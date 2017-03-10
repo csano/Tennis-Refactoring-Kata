@@ -51,6 +51,7 @@
     <Compile Include="PlayerScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
+    <Compile Include="Scoring.cs" />
     <Compile Include="ScoringConditionBase.cs" />
     <Compile Include="ScoringConditionEvaluator.cs" />
     <Compile Include="RuleStringConverter.cs" />
