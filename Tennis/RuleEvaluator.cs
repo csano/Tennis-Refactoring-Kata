@@ -16,9 +16,9 @@ namespace Tennis
             };
         }
 
-        public bool Evaluate(PlayerScore player1Score, PlayerScore player2Score)
+        public IScoringCondition Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            return GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => true);
+            return GetScoringRules().FirstOrDefault(x => x.Evaluate(player1Score, player2Score));
         }
     }
 }

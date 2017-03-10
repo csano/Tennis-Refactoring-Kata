@@ -19,14 +19,8 @@ namespace Tennis
 
         public override string ToString()
         {
-            /*
             var successCondition = new RuleEvaluator().Evaluate(playerScores[0], playerScores[1]);
-            if (successCondition)
-            {
-                return new RuleStringConverter().Convert(successCondition, playerScores[0], playerScores[1]);
-            }
-            */
-            return "";
+            return successCondition != null ? new RuleStringConverter().Convert(successCondition, playerScores[0], playerScores[1]) : string.Empty;
         }
     }
 
