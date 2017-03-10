@@ -49,7 +49,7 @@
     <Compile Include="ITennisGame.cs" />
     <Compile Include="RuleBase.cs" />
     <Compile Include="Scoreboard.cs" />
-    <Compile Include="TennisGame1.cs" />
+    <Compile Include="TennisGame.cs" />
     <Compile Include="TennisGame2.cs" />
     <Compile Include="TennisGame3.cs" />
     <Compile Include="TennisTests.cs" />
