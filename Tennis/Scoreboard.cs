@@ -41,12 +41,6 @@ namespace Tennis
         }
     }
 
-    internal interface IConditionStringConverter
-    {
-        Type ConditionType { get; }
-        string Convert(PlayerScore player1Score, PlayerScore player2Score);
-    }
-
     internal class Scoreboard
     {
         private readonly PlayerScore[] playerScores = new PlayerScore[2];
