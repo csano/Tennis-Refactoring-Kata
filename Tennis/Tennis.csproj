@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AdvantageScoringCondition.cs" />
     <Compile Include="AdvantageScoringConditionStringConverter.cs" />
+    <Compile Include="AssemblyUtility.cs" />
     <Compile Include="IScoringConditionStringConverter.cs" />
     <Compile Include="IScoringCondition.cs" />
     <Compile Include="Player.cs" />
