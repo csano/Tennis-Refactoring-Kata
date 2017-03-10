@@ -11,7 +11,7 @@ namespace Tennis
             return AppDomain.CurrentDomain
                 .GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => typeof(T).IsAssignableFrom(p) && !p.IsInterface)
+                .Where(p => typeof(T).IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
                 .Select(x => (T) Activator.CreateInstance(x));
         }
     }

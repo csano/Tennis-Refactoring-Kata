@@ -7,13 +7,7 @@ namespace Tennis
     {
         private static IEnumerable<IScoringCondition> GetScoringRules()
         {
-            return new List<IScoringCondition>
-            {
-                new TieScoringCondition(),
-                new AdvantageScoringCondition(),
-                new ScoreIsNotATieScoringCondition(),
-                new WinnerScoringCondition()
-            };
+            return AssemblyUtility.CreateInstancesFromAssemblyTypes<IScoringCondition>();
         }
 
         public IScoringCondition Evaluate(PlayerScore player1Score, PlayerScore player2Score)
