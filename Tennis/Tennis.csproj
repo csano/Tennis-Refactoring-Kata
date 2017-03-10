@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvantageCondition.cs" />
+    <Compile Include="AdvantageRule.cs" />
     <Compile Include="IScoringCondition.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerScore.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
     <Compile Include="Test.cs" />
-    <Compile Include="TieCondition.cs" />
+    <Compile Include="TieRule.cs" />
     <Compile Include="WinnerCondition.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace Tennis
             return player1Score.Score >= player2Score.Score ? player1Score : player2Score;
         }
 
-        public abstract string Evaluate(PlayerScore player1Score, PlayerScore player2Score);
+        public abstract bool Evaluate(PlayerScore player1Score, PlayerScore player2Score);
 
         protected static int ScoreDifferential(PlayerScore player1Score, PlayerScore player2Score)
         {

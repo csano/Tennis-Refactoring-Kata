@@ -3,14 +3,14 @@ using System.Linq;
 
 namespace Tennis
 {
-    internal class ScoreDisplay
+    internal class RuleEvaluator
     {
         private static IEnumerable<IScoringCondition> GetScoringRules()
         {
             return new List<IScoringCondition>
             {
-                new TieCondition(),
-                new AdvantageCondition(),
+                new TieRule(),
+                new AdvantageRule(),
                 new ScoreIsNotATieAndFortyOrUnderCondition(),
                 new WinnerCondition()
             };
@@ -18,7 +18,8 @@ namespace Tennis
 
         public string Generate(PlayerScore player1Score, PlayerScore player2Score)
         {
-            return GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => x != null);
+            return null;
+                //GetScoringRules().Select(x => x.Evaluate(player1Score, player2Score)).FirstOrDefault(x => x != null);
         }
     }
 
@@ -39,7 +40,7 @@ namespace Tennis
 
         public override string ToString()
         {
-            return new ScoreDisplay().Generate(playerScores[0], playerScores[1]);
+            return new RuleEvaluator().Generate(playerScores[0], playerScores[1]);
         }
     }
 
