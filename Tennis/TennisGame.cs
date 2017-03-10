@@ -16,7 +16,7 @@ namespace Tennis
 
         public string AnnounceScore()
         {
-            return scoreboard.Announce();
+            return scoreboard.AnnounceScore();
         }
     }
 }
