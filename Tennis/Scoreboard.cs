@@ -12,7 +12,7 @@ namespace Tennis
             {
                 new TieRule(),
                 new AdvantageRule(),
-                new ScoreIsNotATieAndFortyOrUnderCondition(),
+                new ScoreIsNotATieRule(),
                 new WinnerCondition()
             };
         }

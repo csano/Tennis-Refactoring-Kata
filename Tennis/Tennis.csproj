@@ -52,7 +52,8 @@
     <Compile Include="ITennisGame.cs" />
     <Compile Include="RuleBase.cs" />
     <Compile Include="Scoreboard.cs" />
-    <Compile Include="ScoreIsNotATieAndFortyOrUnderCondition.cs" />
+    <Compile Include="ScoreIsNotATieRule.cs" />
+    <Compile Include="ScoreIsNotATieStringConverter.cs" />
     <Compile Include="TennisGame.cs" />
     <Compile Include="TennisTests.cs" />
     <Compile Include="Test.cs" />

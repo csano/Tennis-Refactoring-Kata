@@ -8,7 +8,6 @@ namespace Tennis
         public override bool Evaluate(PlayerScore player1Score, PlayerScore player2Score)
         {
             return Condition(player1Score, player2Score);
-                //return $"{player1Score.Score}-{player2Score.Score}";
         }
 
         private static bool ScoreIsLessThanOrEqualToForty(PlayerScore player)
