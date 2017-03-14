@@ -18,6 +18,7 @@ namespace Tennis
             {
                 return player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
             }
+
             if (player1.Score >= 4 || player2.Score >= 4)
             {
                 var scoreDifference = player1.Score - player2.Score;
@@ -28,17 +29,7 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    int tempScore;
-                    if (i == 1) tempScore = player1.Score;
-                    else
-                    {
-                        score += "-";
-                        tempScore = player2.Score;
-                    }
-                    score += StringifyScore(tempScore);
-                }
+                return $"{StringifyScore(player1.Score)}-{StringifyScore(player2.Score)}";
             }
             return score;
         }
