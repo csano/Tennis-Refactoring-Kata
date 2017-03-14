@@ -18,7 +18,7 @@ namespace Tennis
             {
                 return player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
             }
-            else if (player1.Score >= 4 || player2.Score >= 4)
+            if (player1.Score >= 4 || player2.Score >= 4)
             {
                 var scoreDifference = player1.Score - player2.Score;
                 if (scoreDifference == 1) score = "Advantage player1";
