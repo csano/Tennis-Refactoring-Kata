@@ -29,11 +29,7 @@ namespace Tennis
             if (player1.Score >= 4 || player2.Score >= 4)
             {
                 var scoreDifference = player1.Score - player2.Score;
-                if (Math.Abs(scoreDifference) == 1)
-                { 
-                    return $"Advantage {GetPlayerInLead().Name}";
-                }
-                return $"Win for {GetPlayerInLead().Name}";
+                return Math.Abs(scoreDifference) == 1 ? $"Advantage {GetPlayerInLead().Name}" : $"Win for {GetPlayerInLead().Name}";
             }
             else
             {
