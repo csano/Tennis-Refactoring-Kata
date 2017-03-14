@@ -1,3 +1,5 @@
+using System;
+
 namespace Tennis
 {
     internal class Scoreboard
@@ -14,7 +16,7 @@ namespace Tennis
             var score = "";
             if (tennisGame1.player1Score == tennisGame1.player2Score)
             {
-                score = TennisGame1.StringifyScore(tennisGame1.player1Score);
+                score = StringifyScore(tennisGame1.player1Score);
                 if (tennisGame1.player1Score > 2)
                 {
                     score = "Deuce";
@@ -43,10 +45,26 @@ namespace Tennis
                         score += "-";
                         tempScore = tennisGame1.player2Score;
                     }
-                    score += TennisGame1.StringifyScore(tempScore);
+                    score += StringifyScore(tempScore);
                 }
             }
             return score;
+        }
+
+        private static string StringifyScore(int tempScore)
+        {
+            switch (tempScore)
+            {
+                case 0:
+                    return "Love";
+                case 1:
+                    return "Fifteen";
+                case 2:
+                    return "Thirty";
+                case 3:
+                    return "Forty";
+            }
+            return String.Empty;
         }
     }
 }

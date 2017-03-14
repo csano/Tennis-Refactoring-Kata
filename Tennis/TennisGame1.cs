@@ -4,8 +4,8 @@ namespace Tennis
     {
         private readonly Player player1;
         private readonly Player player2;
-        private int player1Score;
-        private int player2Score;
+        public int player1Score;
+        public int player2Score;
         private readonly Scoreboard scoreboard;
 
         public TennisGame1(Player player1, Player player2)
