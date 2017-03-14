@@ -8,5 +8,6 @@ namespace Tennis
         }
 
         public string Name { get; private set; }
+        public uint Score { get; set; }
     }
 }

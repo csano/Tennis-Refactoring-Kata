@@ -17,6 +17,7 @@ namespace Tennis
 
         public void AwardPointToPlayer(Player player)
         {
+            player.Score++;
             if (player == player1)
                 player1Score += 1;
             else
