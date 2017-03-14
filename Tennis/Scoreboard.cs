@@ -18,15 +18,7 @@ namespace Tennis
             var score = "";
             if (player1.Score == player2.Score)
             {
-                score = StringifyScore(player1.Score);
-                if (player1.Score > 2)
-                {
-                    score = "Deuce";
-                }
-                else
-                {
-                    score += "-All";
-                }
+                score = player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
             }
             else if (player1.Score >= 4 || player2.Score >= 4)
             {
@@ -55,18 +47,7 @@ namespace Tennis
 
         private static string StringifyScore(int tempScore)
         {
-            switch (tempScore)
-            {
-                case 0:
-                    return "Love";
-                case 1:
-                    return "Fifteen";
-                case 2:
-                    return "Thirty";
-                case 3:
-                    return "Forty";
-            }
-            return String.Empty;
+            return new[] {"Love", "Fifteen", "Thirty", "Forty"}[tempScore];
         }
     }
 }
