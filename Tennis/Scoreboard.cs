@@ -1,3 +1,5 @@
+using System;
+
 namespace Tennis
 {
     internal class Scoreboard
@@ -11,6 +13,11 @@ namespace Tennis
             this.player2 = player2;
         }
 
+        private Player GetPlayerInLead()
+        {
+            return player1.Score > player2.Score ? player1 : player2;
+        }
+
         public string Announce()
         {
             var score = "";
@@ -22,7 +29,10 @@ namespace Tennis
             if (player1.Score >= 4 || player2.Score >= 4)
             {
                 var scoreDifference = player1.Score - player2.Score;
-                if (scoreDifference == 1) score = "Advantage player1";
+                if (Math.Abs(scoreDifference) == 1)
+                { 
+                    return $"Advantage {GetPlayerInLead().Name}";
+                }
                 else if (scoreDifference == -1) score = "Advantage player2";
                 else if (scoreDifference >= 2) score = "Win for player1";
                 else score = "Win for player2";
