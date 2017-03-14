@@ -1,5 +1,3 @@
-using System;
-
 namespace Tennis
 {
     internal class Scoreboard
@@ -18,14 +16,14 @@ namespace Tennis
             var score = "";
             if (player1.Score == player2.Score)
             {
-                score = player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
+                return player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
             }
             else if (player1.Score >= 4 || player2.Score >= 4)
             {
-                var minusResult = player1.Score - player2.Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
+                var scoreDifference = player1.Score - player2.Score;
+                if (scoreDifference == 1) score = "Advantage player1";
+                else if (scoreDifference == -1) score = "Advantage player2";
+                else if (scoreDifference >= 2) score = "Win for player1";
                 else score = "Win for player2";
             }
             else
