@@ -2,7 +2,6 @@ namespace Tennis
 {
     internal class TennisGame1 : ITennisGame
     {
-
         private readonly Scoreboard scoreboard;
 
         public TennisGame1(Player player1, Player player2)
