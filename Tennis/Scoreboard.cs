@@ -30,10 +30,7 @@ namespace Tennis
             {
                 return $"{(Math.Abs(player1.Score - player2.Score) == 1 ? "Advantage" : "Win for")} {GetPlayerInLead().Name}";
             }
-            else
-            {
-                return $"{StringifyScore(player1.Score)}-{StringifyScore(player2.Score)}";
-            }
+            return $"{StringifyScore(player1.Score)}-{StringifyScore(player2.Score)}";
         }
 
         private static string StringifyScore(int tempScore)
