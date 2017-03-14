@@ -4,20 +4,22 @@ namespace Tennis
 {
     internal class Scoreboard
     {
-        private TennisGame1 tennisGame1;
+        private readonly Player player1;
+        private readonly Player player2;
 
-        public Scoreboard(TennisGame1 tennisGame1)
+        public Scoreboard(Player player1, Player player2)
         {
-            this.tennisGame1 = tennisGame1;
+            this.player1 = player1;
+            this.player2 = player2;
         }
 
         public string Announce()
         {
             var score = "";
-            if (tennisGame1.player1Score == tennisGame1.player2Score)
+            if (player1.Score == player2.Score)
             {
-                score = StringifyScore(tennisGame1.player1Score);
-                if (tennisGame1.player1Score > 2)
+                score = StringifyScore(player1.Score);
+                if (player1.Score > 2)
                 {
                     score = "Deuce";
                 }
@@ -26,9 +28,9 @@ namespace Tennis
                     score += "-All";
                 }
             }
-            else if (tennisGame1.player1Score >= 4 || tennisGame1.player2Score >= 4)
+            else if (player1.Score >= 4 || player2.Score >= 4)
             {
-                var minusResult = tennisGame1.player1Score - tennisGame1.player2Score;
+                var minusResult = player1.Score - player2.Score;
                 if (minusResult == 1) score = "Advantage player1";
                 else if (minusResult == -1) score = "Advantage player2";
                 else if (minusResult >= 2) score = "Win for player1";
@@ -39,11 +41,11 @@ namespace Tennis
                 for (var i = 1; i < 3; i++)
                 {
                     int tempScore;
-                    if (i == 1) tempScore = tennisGame1.player1Score;
+                    if (i == 1) tempScore = player1.Score;
                     else
                     {
                         score += "-";
-                        tempScore = tennisGame1.player2Score;
+                        tempScore = player2.Score;
                     }
                     score += StringifyScore(tempScore);
                 }
