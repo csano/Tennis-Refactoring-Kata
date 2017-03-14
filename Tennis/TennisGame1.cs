@@ -27,22 +27,6 @@ namespace Tennis
         {
             return scoreboard.Announce();
         }
-
-        private static string StringifyScore(int tempScore)
-        {
-            switch (tempScore)
-            {
-                case 0:
-                    return "Love";
-                case 1:
-                    return "Fifteen";
-                case 2:
-                    return "Thirty";
-                case 3:
-                    return "Forty";
-            }
-            return string.Empty;
-        }
     }
 }
 
