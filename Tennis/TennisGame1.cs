@@ -6,11 +6,13 @@ namespace Tennis
         private readonly Player player2;
         private int player1Score;
         private int player2Score;
+        private readonly Scoreboard scoreboard;
 
         public TennisGame1(Player player1, Player player2)
         {
             this.player1 = player1;
             this.player2 = player2;
+            scoreboard = new Scoreboard(this);
         }
 
         public void AwardPointToPlayer(Player player)
@@ -23,38 +25,7 @@ namespace Tennis
 
         public string GetCurrentScore()
         {
-            var score = "";
-            if (player1Score == player2Score)
-            {
-                score = StringifyScore(player1Score);
-                if (player1Score > 2)
-                {
-                    score = "Deuce";
-                }
-                else
-                {
-                    score += "-All";
-                }
-            }
-            else if (player1Score >= 4 || player2Score >= 4)
-            {
-                var minusResult = player1Score - player2Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
-            }
-            else
-            {
-                for (var i = 1; i < 3; i++)
-                {
-                    int tempScore;
-                    if (i == 1) tempScore = player1Score;
-                    else { score += "-"; tempScore = player2Score; }
-                    score += StringifyScore(tempScore);
-                }
-            }
-            return score;
+            return scoreboard.Announce();
         }
 
         private static string StringifyScore(int tempScore)
