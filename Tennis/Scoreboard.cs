@@ -20,7 +20,6 @@ namespace Tennis
 
         public string Announce()
         {
-            var score = "";
             if (player1.Score == player2.Score)
             {
                 return player1.Score > 2 ? "Deuce" : $"{StringifyScore(player1.Score)}-All";
