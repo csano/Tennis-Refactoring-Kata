@@ -33,8 +33,7 @@ namespace Tennis
                 { 
                     return $"Advantage {GetPlayerInLead().Name}";
                 }
-                if (scoreDifference >= 1) score = "Win for player1";
-                else score = "Win for player2";
+                return $"Win for {GetPlayerInLead().Name}";
             }
             else
             {
