@@ -34,7 +34,6 @@ namespace Tennis
             {
                 return $"{StringifyScore(player1.Score)}-{StringifyScore(player2.Score)}";
             }
-            return score;
         }
 
         private static string StringifyScore(int tempScore)
